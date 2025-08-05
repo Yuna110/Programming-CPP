@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include <cmath>
 
 class Base_class {
@@ -42,8 +43,8 @@ class Rectangle : public Base_class {
 };
 class Circle : public Base_class {
 	public:	
-	Circle(double rr){
-		radius = rr;
+	Circle(double r){
+		radius = r;
 	}
 	void findArea() {
 		std::cout << "Area of circle is " << (M_PI * radius * radius) << std::endl;
@@ -60,6 +61,27 @@ class DTriangle : public Triangle {
 	}
 	void findArea() {
 		std::cout << "Area of 3D Triangle is " << (0.5 * base * height * depth) << std::endl;
+	}
+	
+};
+
+class DRectangle : public Rectangle {
+	public:
+	DRectangle(){
+		length = 4; width = 3; height = 5; 
+	}
+	void findArea() {
+		std::cout << "Area of 3D Rectangle is " << 2*((length * width)+(width * height)+(height * length))<< std::endl;
+	}
+};
+
+class Sphere : public Circle {
+	public:
+	Sphere (double r) : Circle(r){
+		radius = r;
+}
+	void findArea() {
+		std::cout << "Area of 3D Circle is " << (4 * M_PI * radius *radius) << std::endl;
 	}
 };
 int main() {
@@ -78,6 +100,14 @@ int main() {
 	DTriangle tr3;
 	tr3.findArea();
 	tr3.perimeter();
+	
+	DRectangle rec3;
+	rec3.findArea();
+	rec3.perimeter();
+	
+	Sphere sph(5);
+	sph.findArea();
+	sph.perimeter();
 
 	return 0;
 }
